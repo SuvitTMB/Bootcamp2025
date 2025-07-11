@@ -34,36 +34,16 @@ var sCheckBottom = 0;
 var xReDirectData = 0;
 var sTeam = "";
 var sTrainingDays = "";
-var xText = "ยินดีต้อนรับสู่<br>ttb BootCamp 2025";
+var xText = "ยินดีต้อนรับสู่<br>ttb BootCamp 2024";
 
 $(document).ready(function () {
-  //if(sessionStorage.getItem("CheckVDO")==null) { 
-  //  sessionStorage.setItem("CheckVDO", "PlayVDO");
-  //document.getElementById('id02').style.display='block';
-  //}
-
-  var str = "";
-  var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
-  var sLineName = "Website";
-  var sLinePicture = "https://profile.line-scdn.net/0hoLlg-mNNMGNRHiaTpMdPNG1bPg4mMDYrKX8qVnIYOgYpe3QwbCp2AXVKaVN_fnMzOC16V3NMagF8";
-  sessionStorage.setItem("LineID", sLineID);
-  sessionStorage.setItem("LineName", sLineName);
-  sessionStorage.setItem("LinePicture", sLinePicture);
-  str += '<div><img src="'+ sessionStorage.getItem("LinePicture") +'" class="profile-team1"></div>';
-  str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
-  $("#MyProfile1").html(str);  
-  $("#MyProfile").html(str);  
-  Connect_DB();
-  CheckEmpID();
-  CheckBootCampOpen();
-
-  //main()
+  main()
 });
 
 
 
 async function main() {
-  await liff.init({ liffId: "1656865573-oOG66mOA" });
+  await liff.init({ liffId: "1657509542-xojrzmlE" });
   document.getElementById("isLoggedIn").append(liff.isLoggedIn());
   if(liff.isLoggedIn()) {
     getUserProfile();
@@ -87,7 +67,6 @@ async function getUserProfile() {
   sessionStorage.setItem("LineID", profile.userId);
   sessionStorage.setItem("LineName", profile.displayName);
   sessionStorage.setItem("LinePicture", profile.pictureUrl);
-  //str += '<div><img src="'+ sessionStorage.getItem("LinePicture") +'" class="add-profile" width="100px"></div>';
   str += '<div><img src="'+ sessionStorage.getItem("LinePicture") +'" class="profile-team1"></div>';
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
@@ -218,12 +197,10 @@ function SaveUpdate() {
     TimegetBox : eSpace,
     DateTime : dateString
   });
-  //console.lg("save="+sessionStorage.getItem("LinePicture"));
 }
 
 
 function WaitingPage() {
-  //console.log("Line 268 = "+xReDirectData);
   document.getElementById('OpenRegister').style.display='none';
   document.getElementById('loading').style.display='none';
   document.getElementById('myDisplayLine').style.display='none';
@@ -253,10 +230,8 @@ function WaitingPage() {
     str +='<div style="color:#fff;font-weight: 600; margin-bottom:10px;">คุณ'+sessionStorage.getItem("EmpName")+'</div>';
     if(xEmpGroup!="" && xEmpSize!="") { 
       str +='<div class="profile-txt1" style="color:#ccc; font-size:12px; margin-top:12px;">ทีมของคุณ</div>';
-      //str += '<div style="font-size:15px; font-weight:600; color:#fff; background:#0056ff; margin:2px 20% 6px 20%; padding-top:8px; padding-bottom:10px; border-radius:8px;">'+xEmpGroup+' --> '+xEmpSize+'</div>';
       str +='<center><div style="width:220px; margin:auto;">';
       str += '<div style="margin-top:5px;"><img src="./flax/'+xEmpGroup+'.jpg" style="width:130px; border-radius: 10px;"></div>';
-      //str += '<div style="float: left; font-size:15px; font-weight:600; width:100px; color:#fff; background:#0056ff; margin:2px 6px; 6px auto; padding-top:8px; padding-bottom:10px; border-radius:8px;">'+xEmpGroup+'</div>';
       str += '<div style="font-size:14px; font-weight:600; color:#fff; margin:5px auto; 6px auto; padding-top:8px; padding-bottom:10px; color:#ffff00;">'+xEmpSize+'</div>';
       str += '</div></center><div class="clr"></div>';
     } else if(xEmpGroup=="" && xEmpSize!="") { 
@@ -264,16 +239,12 @@ function WaitingPage() {
       str += '<div style="margin-top:5px;"><img src="./flax/'+xEmpGroup+'.jpg" style="width:130px; border-radius: 10px;"></div>';
       str += '<div style="font-size:15px; font-weight:600; color:#fff; background:#05b322; margin:5px 30% 6px 30%; padding-top:8px; padding-bottom:10px; border-radius:8px;">'+xEmpSize+'</div>';
     } else {
-      str += '<div style="font-size:15px; font-weight:600; color:#fff; background:#f68b1f; margin:12px 20% 6px 20%; padding-top:8px; padding-bottom:10px; border-radius:8px;">'+ xText +'</div>';
+      str += '<div style="font-size:15px; font-weight:600; color:#fff; background:#cb1515; margin:12px 20% 6px 20%; padding-top:8px; padding-bottom:10px; border-radius:8px;">'+ xText +'</div>';
     }
     if(sDateTime!="") {
-      str +='<div class="btn-a1" onclick="GotoTeam()" style="margin-top:20px;">คลิกดูสมาชิกของแต่ละทีม</div><div class="clr" style="height:5px;"></div>';
+      str +='<div class="btn-a1" onclick="GotoTeam()" style="margin-top:20px;">คลิกดูสมาชิกในทีมของคุณ</div><div class="clr" style="height:5px;"></div>';
       str +='<div style="color:#baaeae;font-size:11px;font-weight: 400; margin-top:5px;">ลงทะเบียนเมื่อ : '+ sDateTime +'</div>';
     }
-    //str +='<div class="btn-t1" onclick="GotoApp()" style="margin-top:25px; margin-right: 3px;">ONE Retail Society</div>';
-    //str +='<div class="btn-t1" onclick="GotoDetail()" style="margin-top:25px;">กำหนดการกิจกรรม</div><div class="clr" style="height:5px;"></div>';
-    //str += '<div class="clr"></div>';
-    //str +='<div class="btn-t1" onclick="ShowRegister()" style="margin-top:10px;width:230px;font-size:11px;">ดูข้อมูลผู้ลงทะเบียน</div>';
     document.getElementById('loading').style.display='none';
     $("#MyWating").html(str);    
   });
@@ -379,7 +350,13 @@ function SaveData() {
       empAddress : eSpace,
       DateRegister : dateString
     });
+    document.getElementById('submit').style.display='none';
     xReDirectData = 1;
+    timerId = setInterval(GotoRoadshow, 3000); 
+    //alert("ลงทะเบียนผู้ใช้งานใหม่\nคลิกเพื่อทำรายการต่อไป");
+    //GotoRoadshow();
+    //console.log("New ---> CheckRegister");
+    //CheckRegister();
   } else {
     db.doc(Eid).update({
       lineID : sessionStorage.getItem("LineID"),
@@ -391,48 +368,51 @@ function SaveData() {
       empBr : eEmpGroup,
       DateRegister : dateString
     });
-  }
-  if(EidBootRegister=="") {
-    if(sessionStorage.getItem("EmpMember")==null) {
-      sessionStorage.setItem("EmpMember", 0);
+
+    if(EidBootRegister=="") {
+      if(sessionStorage.getItem("EmpMember")==null) {
+        sessionStorage.setItem("EmpMember", 0);
+      }
+      dbBootRegister.add({
+        LineID : sessionStorage.getItem("LineID"),
+        LineName : sessionStorage.getItem("LineName"),
+        LinePicture : sessionStorage.getItem("LinePicture"),
+        EmpID : document.getElementById("txtEmpID").value,
+        EmpName : document.getElementById("txtEmpName").value,
+        EmpRH : document.getElementById("txtEmpGroup").value,
+        ATK : "Negative",
+        EmpMember : parseInt(sessionStorage.getItem("EmpMember")),
+        PreRegister : 0,
+        EmpTable : parseInt(sessionStorage.getItem("EmpTable")),
+        EmpSize : sessionStorage.getItem("EmpSize"),
+        PreDateTime : eSpace,
+        StatusRegister : 1,
+        TimegetBox : eSpace,
+        CampRound : sCampRound,
+        EmpType : sEmpType,
+        TimeStamp : TimeStampDate,
+        DateTime : dateString
+      });
+      //console.log("add---1");
     }
-    dbBootRegister.add({
-      LineID : sessionStorage.getItem("LineID"),
-      LineName : sessionStorage.getItem("LineName"),
-      LinePicture : sessionStorage.getItem("LinePicture"),
-      EmpID : document.getElementById("txtEmpID").value,
-      EmpName : document.getElementById("txtEmpName").value,
-      EmpRH : document.getElementById("txtEmpGroup").value,
-      ATK : "Negative",
-      EmpMember : parseInt(sessionStorage.getItem("EmpMember")),
-      PreRegister : 0,
-      EmpTable : parseInt(sessionStorage.getItem("EmpTable")),
-      EmpSize : sessionStorage.getItem("EmpSize"),
-      PreDateTime : eSpace,
-      StatusRegister : 1,
-      TimegetBox : eSpace,
-      CampRound : sCampRound,
-      EmpType : sEmpType,
-      TimeStamp : TimeStampDate,
-      DateTime : dateString
-    });
+   
+    console.log("EidBootMember="+EidBootMember);
+    if(EidBootMember!="") {
+      dbBootMember.doc(EidBootMember).update({
+        LineID : sessionStorage.getItem("LineID"),
+        LineName : sessionStorage.getItem("LineName"),
+        LinePicture : sessionStorage.getItem("LinePicture"),
+        StatusRegister : 1,
+        TimeIN : dateString,
+        TimeStampRec : TimeStampDate
+      });
+      //console.log("add---2");
+    }
+    CheckRegister();
+    document.getElementById('loading').style.display='none';
+    document.getElementById('myRegister').style.display='none';
+    document.getElementById('DisplayLogo').style.display='block';
   }
- 
-  if(EidBootMember!="") {
-    dbBootMember.doc(EidBootMember).update({
-      LineID : sessionStorage.getItem("LineID"),
-      LineName : sessionStorage.getItem("LineName"),
-      LinePicture : sessionStorage.getItem("LinePicture"),
-      StatusRegister : 1,
-      TimeIN : dateString,
-      TimeStampRec : TimeStampDate
-    });
-  }
-  CheckRegister();
-  document.getElementById('loading').style.display='none';
-  document.getElementById('myRegister').style.display='none';
-  document.getElementById('DisplayLogo').style.display='block';
-  document.getElementById('OpenBar').style.display='block';
 }
 
 function RegisterClose() {
@@ -493,7 +473,7 @@ function checkZero(data){
 
 
 function ShowRegister() {
-  console.log("ShowRegister===="+xRound);
+  //console.log("ShowRegister===="+xRound);
   //document.getElementById('myDisplayLine').style.display='none';
   //document.getElementById('myRegister').style.display='none';
   //document.getElementById('myTimer').style.display='block';
